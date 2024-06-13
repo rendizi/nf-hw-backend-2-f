@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:4000');
+const socket = io('http://127.0.0.1:4000/');
 
 interface Room {
     _id: string;
@@ -27,7 +27,7 @@ const Page: React.FC = () => {
         const token = localStorage.getItem("token");
         const headers: HeadersInit = token ? { Authorization: `${token}` } : {};
 
-        fetch("http://localhost:4000/rooms", {
+        fetch("http://127.0.0.1:4000/rooms", {
             headers
         })
             .then((response) => {

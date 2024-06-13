@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
 import { toast } from "react-toastify";
 
-const socket = io("http://localhost:4000");
+const socket = io("http://127.0.0.1:4000");
 
 interface PageProps {
     params: {
@@ -87,7 +87,7 @@ const Chat: React.FC<PageProps> = (props) => {
 
         typingTimeoutRef.current = setTimeout(() => {
             socket.emit("send-stop-typing", token, id);
-        }, 1000); // Adjust debounce delay as needed
+        }, 1000);
     };
 
     const handleMessageSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -100,7 +100,6 @@ const Chat: React.FC<PageProps> = (props) => {
 
     const handleGoOffline = () => {
         socket.emit("send-offline", token, id);
-        // Additional actions if needed after going offline
     };
 
     return (
