@@ -73,9 +73,12 @@ const Page: React.FC = () => {
                     value={roomId}
                     onChange={(e) => setRoomId(e.target.value)}
                 />
-                <button onClick={fetchRooms}>Refresh Rooms</button>
-                <button onClick={createRoom}>Create New</button>
-                <button onClick={joinRoom}>Join Room</button>
+                <button onClick={joinRoom} className="ml-5">Join Room</button>
+                <button onClick={fetchRooms} className="ml-5">Refresh Rooms</button>
+                <button onClick={createRoom} className="ml-5">Create New</button>
+
+                <p>Click below to open chat</p>
+
                 {rooms && rooms.length === 0 ? (
                     <p>No rooms available</p>
                 ) : (
